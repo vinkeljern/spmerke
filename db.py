@@ -50,3 +50,14 @@ class Gruppe(ndb.Model):
 	@staticmethod
 	def create_key (navn):
 		return ndb.Key('Gruppe', navn)
+
+class Aktivitet(ndb.Model):
+        navn = ndb.StringProperty()
+        beskrivelse = ndb.StringProperty()
+        link = ndb.StringProperty()
+        nivaa = ndb.KeyProperty(repeated=True)
+	bidrarTil = ndb.KeyProperty(repeated=True)
+
+	@staticmethod
+	def create_key (nivaa, navn):
+		return ndb.Key('Nivaa', nivaa,'Aktivitet',navn)
