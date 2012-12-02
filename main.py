@@ -43,7 +43,7 @@ class MainHandler(webapp2.RequestHandler):
 		r.key = nokkel
 		r.put()
 
-		self.response.write('Heio world!')
+		self.response.write('Hei DU!!')
 
 app = webapp2.WSGIApplication([
     ('/', MainHandler)
