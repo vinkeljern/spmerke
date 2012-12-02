@@ -10,10 +10,11 @@ class Speider(ndb.Model):
 	programMaal = ndb.KeyProperty(repeated=True)
 	
 	@staticmethod
-	def create_key (medlemsNummer):
-		return ndb.Key('Speider',medlemsNummer)
+	def create_key (gruppe, medlemsNummer):
+		return ndb.Key('Gruppe', gruppe, 'Speider',medlemsNummer)
 	
 class Fordypningsmerke(ndb.Model):
+	id = ndb.StringProperty()
 	navn = ndb.StringProperty() 
 	beskrivelse = ndb.StringProperty()
 	link = ndb.StringProperty()
@@ -21,6 +22,31 @@ class Fordypningsmerke(ndb.Model):
 	bidrarTil = ndb.KeyProperty(repeated=True)
 	
 	@staticmethod
-	def create_key (navn):
-		return ndb.Key('Fordypningsmerke',navn)
+	def create_key (id):
+		return ndb.Key('Fordypningsmerke',id)
 	
+class Programmerke(ndb.Model):
+	navn = ndb.StringProperty()
+	beskrivelse = ndb.StringProperty()
+	link = ndb.StringProperty()
+
+	@staticmethod
+	def create_key (nivaa, navn):
+		return ndb.Key('Nivaa', nivaa,'Programmerke',navn)
+
+class Nivaa(ndb.Model):
+	navn = ndb.StringProperty()
+	beskrivelse = ndb.StringProperty()
+	link = ndb.StringProperty()
+
+	@staticmethod
+	def create_key (navn):
+		return ndb.Key('Nivaa', navn)
+
+class Gruppe(ndb.Model):
+	navn = ndb.StringProperty()
+	link = ndb.StringProperty()
+
+	@staticmethod
+	def create_key (navn):
+		return ndb.Key('Gruppe', navn)

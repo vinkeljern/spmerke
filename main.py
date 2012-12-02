@@ -15,15 +15,34 @@
 # limitations under the License.
 #
 import webapp2 
-from db import Fordypningsmerke
-
+import db
 
 class MainHandler(webapp2.RequestHandler):
     def get(self):
-		nokkel = Fordypningsmerke.create_key("Flagg")
-		r = Fordypningsmerke(navn="Flagg", link="http://speiderbasen.no/vis/?id=582")
+		
+		nokkel = db.Nivaa.create_key("Bever")
+		r = db.Nivaa(navn="Bever")
 		r.key = nokkel
 		r.put()
+
+		nokkel = db.Gruppe.create_key("Askim Speidergruppe")
+		r = db.Gruppe(navn="Askim Speidergruppe")
+		r.key = nokkel
+		r.put()
+
+		nokkel = db.Programmerke.create_key("Bever", "Friluftsliv")
+		r = db.Programmerke(navn="Friluftsliv")
+		r.key = nokkel
+		r.put()
+
+		nivaa_nokkel = db.Nivaa.create_key("Bever")
+		nokkel = db.Fordypningsmerke.create_key("flagg_bever")
+		r = db.Fordypningsmerke(id="flagg_bever",
+				navn="Flagg",
+				nivaa=[nivaa_nokkel])
+		r.key = nokkel
+		r.put()
+
 		self.response.write('Heio world!')
 
 app = webapp2.WSGIApplication([
