@@ -20,11 +20,12 @@ from db import Speider
 
 class MainHandler(webapp2.RequestHandler):
     def get(self):
-		speider=Speider.create_key(1)
-		r=Speider(navn="Øystein med Ø", medlemsNummer=1)
-		r.key=speider
+		speider = Speider.create_key(1)
+		r = Speider(navn=u"oystein med o",
+					medlemsNummer=1)
+		r.key = speider
 		r.put()
-        self.response.write('Heio world!')
+		self.response.write('Heio world!')
 
 app = webapp2.WSGIApplication([
     ('/', MainHandler)
