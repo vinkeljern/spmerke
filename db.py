@@ -13,3 +13,14 @@ class Speider(ndb.Model):
 	def create_key (medlemsNummer):
 		return ndb.Key('Speider',medlemsNummer)
 	
+class Fordypningsmerke(ndb.Model):
+	navn = ndb.StringProperty() 
+	beskrivelse = ndb.StringProperty()
+	link = ndb.StringProperty()
+	nivaa = ndb.KeyProperty(repeated=True)
+	bidrarTil = ndb.KeyProperty(repeated=True)
+	
+	@staticmethod
+	def create_key (navn):
+		return ndb.Key('Fordypningsmerke',navn)
+	

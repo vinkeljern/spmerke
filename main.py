@@ -15,15 +15,14 @@
 # limitations under the License.
 #
 import webapp2 
-from db import Speider
+from db import Fordypningsmerke
 
 
 class MainHandler(webapp2.RequestHandler):
     def get(self):
-		speider = Speider.create_key(1)
-		r = Speider(navn=u"oystein med o",
-					medlemsNummer=1)
-		r.key = speider
+		nokkel = Fordypningsmerke.create_key("Flagg")
+		r = Fordypningsmerke(navn="Flagg", link="http://speiderbasen.no/vis/?id=582")
+		r.key = nokkel
 		r.put()
 		self.response.write('Heio world!')
 
